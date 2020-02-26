@@ -1,8 +1,7 @@
-#Get_BingWallpaper(修改：jadgam 20200226)
-#原项目地址：https://github.com/kkkgo/DSM_Login_BingWallpaper
-#如需收集每日美图去掉下面注释设置保存文件夹路径
+#Get_BingWallpaper(jadgam 20200226)
+#原项目地址:https://github.com/kkkgo/DSM_Login_BingWallpaper
+#如需收集每日美图去掉下一行首“#”后修改保存路径(FileStation里对文件夹右键选属性查看路径)#
 #savepath="/volume1/wallpaper"
-#在FileStation里面右键文件夹属性可以看到路径
 pic=$(wget -t 5 --no-check-certificate -qO- "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1")
 #echo $pic|grep -q enddate&&echo "pic:"$pic||echo "Can't get the pic link! exit"
 echo $pic|grep -q enddate||exit
@@ -12,7 +11,7 @@ tmpfile=/tmp/$date"_bing.jpg"
 wget -t 5 --no-check-certificate  $link -qO $tmpfile
 #[ -s $tmpfile ]&&echo -e $link"\nSaved to: "$tmpfile||echo "Can't Get the pic! exit"
 [ -s $tmpfile ]||exit
-#echo -n "替换桌面背景图片（按F5键刷新页面生效）Replacing wallpaper..."
+#echo -n "替换桌面背景图片(按F5键刷新页面生效)Replacing wallpaper..."
 rm -rf /usr/syno/etc/preference/admin/wallpaper
 cp -f $tmpfile /usr/syno/etc/preference/admin/wallpaper &>/dev/null
 sed -i s/customize_wallpaper\":false/customize_wallpaper\":true/ /usr/syno/etc/preference/admin/usersettings
