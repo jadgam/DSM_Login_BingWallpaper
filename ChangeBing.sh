@@ -12,7 +12,7 @@ tmpfile=/tmp/$date"_bing.jpg"
 wget -t 5 --no-check-certificate  $link -qO $tmpfile
 #[ -s $tmpfile ]&&echo -e $link"\nSaved to: "$tmpfile||echo "Can't Get the pic! exit"
 [ -s $tmpfile ]||exit
-#echo -n "替换桌面背景图片（按F5刷新页面生效）Replacing wallpaper..."
+#echo -n "替换桌面背景图片（按F5键刷新页面生效）Replacing wallpaper..."
 rm -rf /usr/syno/etc/preference/admin/wallpaper
 cp -f $tmpfile /usr/syno/etc/preference/admin/wallpaper &>/dev/null
 sed -i s/customize_wallpaper\":false/customize_wallpaper\":true/ /usr/syno/etc/preference/admin/usersettings
